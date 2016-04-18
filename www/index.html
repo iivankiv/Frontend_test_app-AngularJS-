@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- HEADER-->
+        <header ng-controller="modalMenu">
+            <!-- DropDownMenu-->
+            <div class="header-top">
+                <button ng-click="showLeft($event)">MENU</button>
+            </div>
+            <menu visible="leftVisible" alignment="left">
+                <menu-item hash="cats-content">Cats</menu-item>
+                <menu-item hash="dogs-content">Dogs</menu-item>
+                <menu-item hash="horses-content">Horses</menu-item>
+                <menu-item hash="contacts-content">Contact us</menu-item>
+            </menu>
+            <!-- End of DropDownMenu-->
+
+            <h2 class="text-header"> Animals  </h2>
+        </header>
+
+        <!-- SECTION-->
+        <section >
+            <ul class="nav nav-pills nav-justified" ng-controller="ContentController as content">
+                <li ng-class="{ active: content.thisPath() == '/cats-content' }">
+                    <a href="#cats-content">Cats</a>
+                </li>
+                <li ng-class="{ active: content.thisPath() == '/dogs-content' }">
+                    <a href="#dogs-content">Dogs</a>
+                </li>
+                <li ng-class="{ active: content.thisPath() == '/horses-content' }">
+                    <a href="#horses-content">Horses</a>
+                </li>
+                <li ng-class="{ active: content.thisPath() == '/contacts-content' }">
+                    <a href="#contacts-content">Contact us</a>
+                </li>
+            </ul>
+
+            <div class="content">
+                <div class="frame">
+                    <ng-view></ng-view>
+                </div>
+
+            </div>
+        </section>
+        <!-- THE END OF THE SECTION-->
+
+        <!-- FOOTER-->
+        <footer ng-controller="ModalController as modalCtrl">
+            <h4>Animals</h4>
+
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn-help btn-lg pull-right" data-toggle="modal" data-target="#myModal">Help</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Help modal</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-modal-danger" data-dismiss="modal" ng-click="modalCtrl.message()">No</button>
+                            <button type="button" class="btn-modal-success" data-dismiss="modal" ng-click="modalCtrl.redirection()">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- THE END OF THE FOOTER-->
+    </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

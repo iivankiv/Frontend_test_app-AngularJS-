@@ -1,0 +1,8 @@
+<div class="form-contact">
+    <form name="myContact" ng-controller="submitController as submit" ng-submit="myContact.$valid && submit.showDate()"  novalidate>
+        <input type="text" placeholder="Enter email" name="myEmail" ng-model="submit.formInfo.myEmail" required mail-Directive/>
+                        <textarea id="myMessage" cols="30" rows="5" placeholder="Enter message" ng-model="submit.formInfo.myMessage" required message-Directive>
+                        </textarea>
+        <input class="pull-right" type="submit" value="Send"/>
+    </form>
+</div>
